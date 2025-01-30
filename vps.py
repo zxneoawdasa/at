@@ -20,14 +20,15 @@ def send_request(url, origin, referer):
         print(f"Error sending request: {e}")
 
 def worker_thread(domain, origin, referer, num_requests):
-    with ThreadPoolExecutor(max_workers=1000) as executor:
+    with ThreadPoolExecutor(max_workers=1000000) as executor:
         for _ in range(num_requests):
             executor.submit(send_request, domain, origin, referer)
 
 def main():
+    print("V2")
     domain = input("Enter the domain (e.g., https://example.com): ")
     num_requests = int(input("How many requests would you like to send? "))
-    num_threads = 1000
+    num_threads = 1000000
     origin = domain
     referer = domain
     threads = []
